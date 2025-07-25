@@ -12,13 +12,13 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const router = useRouter();
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      router.push("/admin/login");
-    } else if (!isAdmin()) {
-      router.push("/client/dashboard");
-    }
-  }, [router]);
+  // useEffect(() => {
+  //   if (!isAuthenticated()) {
+  //     router.push("/admin/login");
+  //   } else if (!isAdmin()) {
+  //     router.push("/client/dashboard");
+  //   }
+  // }, [router]);
 
   // const user = getStoredUser();
   // useSocket(user ? { userId: user.id } : { userId: null });

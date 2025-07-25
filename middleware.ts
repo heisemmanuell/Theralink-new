@@ -89,12 +89,16 @@ export function middleware(request: NextRequest) {
   //   }
   // }
 
-  // return NextResponse.next()
+  return NextResponse.next()
 }
 
+// export const config = {
+//   matcher: [
+//     '/admin/:path*',
+//     '/client/:path*',
+//   ],
+// }
+
 export const config = {
-  matcher: [
-    '/admin/:path*',
-    '/client/:path*',
-  ],
+  matcher: [],
 }

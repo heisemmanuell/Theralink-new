@@ -16,32 +16,6 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { getStoredUser, logout } from '@/hooks/auth'
 
-  const links = [
-    { name: 'Authorizations', href: '/admin/more/authorization' },
-    { name: 'Client Compliance', href: '/admin/more/compliance' },
-    { name: 'Clinic Files', href: '/admin/more/clinic-files' },
-    { name: 'Default Goals', href: '/admin/more/goals' },
-    { name: 'Document Templates', href: '/admin/more/templates' },
-    { name: 'Portal Parental Access (CP)', href: '/admin/more/parental-access' },
-    { name: 'Roles', href: '/admin/more/roles' },
-    { name: 'Services', href: '/admin/more/services' },
-    { name: 'Settings', href: '/admin/more/settings' },
-    { name: 'Sites', href: '/admin/more/sites' },
-    { name: 'Staff Documents', href: '/admin/more/staff-document' },
-  ];
-
-  const linksAudit = [
-    { name: 'Staff Audit', href: '/admin/more/staff-audit' },
-    { name: 'Client Audit', href: '/admin/more/client-audit' },
-  ];
-
-  const linksMisc = [
-    { name: 'Task Manager', href: '/admin/more/tasks' },
-    { name: 'Admin. Board', href: '/admin/more/admin-board' },
-    { name: 'Time Clock', href: '/admin/more/time-clock' },
-    { name: 'Knowledge Base', href: '/admin/more/knowledge-base' },
-  ];
-
 const LogoutMenuItem = () => {
   const router = useRouter();
 
@@ -66,11 +40,6 @@ const AdminHeader = () => {
 
   const isActivePath = (path: string) => {
     const currentPath = pathname?.split('/')[2];
-    return currentPath === path ? 'bg-primary text-white' : '';
-  }
-
-  const isActiveFullPath = (path: string) => {
-    const currentPath = pathname;
     return currentPath === path ? 'bg-primary text-white' : '';
   }
 
@@ -156,139 +125,11 @@ const AdminHeader = () => {
                 Dashboard
               </Button>
             </Link>
-            <Link href="/admin/staff">
-              <Button className={`${isActivePath('staff')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
-                Staff
-              </Button>
-            </Link>
-            <Link href="/admin/clients">
-              <Button className={`${isActivePath('clients')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
-                Clients
-              </Button>
-            </Link>
             <Link href="/admin/messages">
               <Button className={`${isActivePath('messages')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
                 Messages
               </Button>
             </Link>
-            <Link href="/admin/calendar">
-              <Button className={`${isActivePath('calendar')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
-                Calendar
-              </Button>
-            </Link>
-            <Link href="/admin/documents">
-              <Button className={`${isActivePath('documents')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
-                Documents
-              </Button>
-            </Link>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className={`${isActivePath('billing')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
-                  Billing <ChevronDown />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className='w-52'>
-                <DropdownMenuItem className='cursor-pointer' asChild>
-                  <Link className={`${isActiveFullPath('/admin/billing/new')}`} href="/admin/billing/new">New Billing</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem className='cursor-pointer' asChild>
-                  <Link className={`${isActiveFullPath("/admin/billing/submissions")}`} href="/admin/billing/submissions">Billing Submissions</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem className='cursor-pointer' asChild>
-                  <Link className={`${isActiveFullPath("/admin/billing/remittance")}`} href="/admin/billing/remittance">Billing Remittance</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem className='cursor-pointer' asChild>
-                  <Link className={`${isActiveFullPath("/admin/billing/profiles")}`} href="/admin/billing/profiles">Billing Profiles</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button className={`${isActivePath('more')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
-                  More <ChevronDown />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className='w-auto'>
-                <div className='flex flex-row p-5 gap-4'>
-                  <div className='flex flex-col'>
-                    <p className='font-bold bg-blue-100 px-3 py-[0.2px] mb-2 rounded-md text-lg'>Clinic</p>
-                    {/* <ul className='ml-2 space-y-1 text-sm'>
-                      <Link href="/admin/more/authorization/" className="text-blue-600 hover:underline">Authorizations</Link>
-                      <li>Client Compliance</li>
-                      <li>Clinic Files</li>
-                      <li>Default Goals</li>
-                      <li>Document Templates</li>
-                      <li>Portal Parental Access (CP)</li>
-                      <li>Roles</li>
-                      <li>Services</li>
-                      <li>Settings</li>
-                      <li>Sites</li>
-                      <li>Staff Documents</li>
-                    </ul> */}
-
-                    <ul className="ml-2 space-y-1 text-sm">
-                      {links.map((link) => (
-                        <li key={link.href}>
-                          <Link
-                            href={link.href}
-                            className={`${pathname === link.href ? 'text-blue-600' : 'text-black'} hover:font-semibold`}
-                          >
-                            {link.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-
-                  </div>
-                  <div className='flex flex-col'>
-                    <p className='font-bold bg-blue-100 px-3 py-[0.2px] mb-2 rounded-md text-lg'>Audit</p>
-                    {/* <ul className='ml-2 space-y-1 text-sm'>
-                      <li>Staff Audit</li>
-                      <li>Client Audit</li>
-                    </ul> */}
-
-                    <ul className="ml-2 space-y-1 text-sm">
-                      {linksAudit.map((link) => (
-                        <li key={link.href}>
-                          <Link
-                            href={link.href}
-                            className={`${pathname === link.href ? 'text-blue-600' : 'text-black'} hover:font-semibold`}
-                          >
-                            {link.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <p className='font-bold bg-blue-100 px-3 py-[0.2px] mb-2 rounded-md text-lg mt-5'>Misc.</p>
-                    {/* <ul className='ml-2 space-y-1 text-sm'>
-                      <li>Task Manager</li>
-                      <li>Admin. Board</li>
-                      <li>Time Clock</li>
-                      <li>Knowledge Base</li>
-                    </ul> */}
-
-                    <ul className="ml-2 space-y-1 text-sm">
-                      {linksMisc.map((link) => (
-                        <li key={link.href}>
-                          <Link
-                            href={link.href}
-                            className={`${pathname === link.href ? 'text-blue-600' : 'text-black'} hover:font-semibold`}
-                          >
-                            {link.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-
-                  </div>
-
-                </div>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
           </div>
         </div>
       </div>

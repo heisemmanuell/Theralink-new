@@ -62,14 +62,14 @@ export default function AdminLogin() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <Link href="/">
-        <Image
+        {/* <Image
           className='mb-8'
           src="/images/logo.png"
           alt="Theralink logo"
           width={180}
           height={38}
           priority
-        />
+        /> */}
       </Link>
       <Card className="w-full max-w-md shadow-xl rounded-md border-none">
         <CardHeader>

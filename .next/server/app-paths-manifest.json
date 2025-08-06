@@ -3,7 +3,6 @@
   "/(auth)/admin/login/page": "app/(auth)/admin/login/page.js",
   "/(auth)/forgot-password/page": "app/(auth)/forgot-password/page.js",
   "/(auth)/reset-password/page": "app/(auth)/reset-password/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/admin/dashboard/page": "app/admin/dashboard/page.js",
   "/admin/messages/page": "app/admin/messages/page.js"
 }

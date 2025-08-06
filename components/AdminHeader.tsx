@@ -49,13 +49,13 @@ const AdminHeader = () => {
         <div className='mx-auto max-w-[1350px]'>
           <div className="flex items-center justify-between h-[80px] px-6 py-3">
             <div className="flex items-center space-x-4">
-              <Image
+              {/* <Image
                 src="/images/logo.png"
                 alt="Next.js logo"
                 width={150}
                 height={32}
                 priority
-              />
+              /> */}
             </div>
             <div className="flex items-center gap-2">
               <div className="relative mr-10 hidden md:block">
@@ -128,6 +128,11 @@ const AdminHeader = () => {
             <Link href="/admin/messages">
               <Button className={`${isActivePath('messages')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
                 Messages
+              </Button>
+            </Link>
+            <Link href="/admin/client-intake">
+              <Button className={`${isActivePath('client-intake')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
+                Client Intake
               </Button>
             </Link>
           </div>

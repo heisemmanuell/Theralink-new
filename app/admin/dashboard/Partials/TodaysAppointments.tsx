@@ -14,7 +14,7 @@ export default function TodaysAppointments() {
   return (
     <Card className='col-span-2'>
       <CardHeader className='bg-slate-900 text-white py-3 mb-3 rounded-t-md'>
-        <CardTitle>Today&apos;s Appointments</CardTitle>
+        <CardTitle>Today&apos;s Conversations</CardTitle>
       </CardHeader>
       <CardContent>
         <ScrollArea className='h-[200px]'>

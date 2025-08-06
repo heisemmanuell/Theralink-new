@@ -16,25 +16,25 @@ export default function ActionCards() {
     },
     {
       icon: <Users2 className='h-6 w-6' />,
-      title: 'Staff',
+      title: 'Doctors',
       count: '10',
       description: '1 online now',
       onClick: () => {},
     },
     {
       icon: <User className='h-6 w-6' />,
-      title: 'Client',
+      title: 'Client Onboarded',
       count: '15',
       description: '2 upcoming appointments',
       onClick: () => router.push('/admin/clients'),
     },
-    {
-      icon: <Building2 className='h-6 w-6' />,
-      title: 'Total Billing',
-      count: '$0.00',
-      description: '0 Submissions today',
-      onClick: () => {},
-    },
+    // {
+    //   icon: <Building2 className='h-6 w-6' />,
+    //   title: 'Total Billing',
+    //   count: '$0.00',
+    //   description: '0 Submissions today',
+    //   onClick: () => {},
+    // },
   ];
 
   return (

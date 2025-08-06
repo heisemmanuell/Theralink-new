@@ -8,7 +8,7 @@ export default function BillingInformation() {
         <CardTitle>Billing Information</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className='space-y-2'>
+        {/* <div className='space-y-2'>
           <div className='flex justify-between'>
             <span>Total Amount Collected:</span>
             <span className='bg-slate-50 py-0.5 px-1 rounded-md'>$0.00</span>
@@ -25,7 +25,7 @@ export default function BillingInformation() {
             <span># of Documents Billed:</span>
             <span className='bg-slate-50 py-0.5 px-1 rounded-md'>0</span>
           </div>
-        </div>
+        </div> */}
       </CardContent>
     </Card>
   );

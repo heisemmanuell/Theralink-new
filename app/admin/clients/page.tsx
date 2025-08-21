@@ -31,6 +31,8 @@ interface Diagnosis {
   time?: string
   address?: string
   signature?: string
+  doctorName?: string
+  marketerName?: string
   assessment?: string
 }
 
@@ -50,6 +52,8 @@ export default function ClientDiagnosis() {
       time: '10:00 AM',
       address: '123 Main St, City, Country',
       assessment: 'Initial consultation and assessment completed.',
+      doctorName: 'Dr. Smith Joe',
+      marketerName: 'Mr Marketer marketing',
       // signature: 'data:image/png;base64,...',
       status: "Submitted",
     },
@@ -57,13 +61,27 @@ export default function ClientDiagnosis() {
       id: 'D002',
       date: '2023-12-01',
       name: 'Mary Johnson',
-      status: "Pending",
+      sex: 'female',
+      time: '2:00 PM',
+      address: '456 Elm St, City, Country',
+      assessment: 'Follow-up appointment for treatment review.',
+      doctorName: 'Dr. Jane Doe',
+      marketerName: 'Ms Marketer marketing',
+      // signature: 'data:image/png;base64,...',
+      status: "Submitted",
     },
     {
       id: 'D003',
       date: '2023-10-15',
       name: 'Alex Lee',
-      status: "Review",
+      sex: 'male',
+      time: '11:30 AM',
+      address: '789 Oak St, City, Country',
+      assessment: 'Patient requires further evaluation.',
+      doctorName: 'Dr. Emily White',
+      marketerName: 'Mr Marketer marketing',
+      // signature: 'data:image/png;base64,...',
+      status: "Submitted",
     },
   ];
 
@@ -139,13 +157,13 @@ export default function ClientDiagnosis() {
                 <TableRow>
                   <TableHead>Date</TableHead>
                   <TableHead>Client Name</TableHead>
-                  <TableHead>Status</TableHead>
+                  {/* <TableHead>Status</TableHead> */}
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredDiagnoses.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={5} className="text-center py-6">
+                    <TableCell colSpan={2} className="text-center py-6">
                       No Client found
                     </TableCell>
                   </TableRow>
@@ -154,11 +172,11 @@ export default function ClientDiagnosis() {
                     <TableRow key={diagnosis.id} className="cursor-pointer hover:bg-accent" onClick={() => handleRowClick(diagnosis)}>
                       <TableCell>{new Date(diagnosis.date).toLocaleDateString()}</TableCell>
                       <TableCell>{diagnosis.name}</TableCell>
-                      <TableCell>
+                      {/* <TableCell>
                         <span className={`px-2 py-1 rounded-full text-xs font-semibold ${diagnosis.status === "Submitted" ? "bg-green-100 text-green-800" : diagnosis.status === "Pending" ? "bg-yellow-100 text-yellow-800" : "bg-blue-100 text-blue-800"}`}>
                           {diagnosis.status}
                         </span>
-                      </TableCell>
+                      </TableCell> */}
                     </TableRow>
                   ))
                 )}
@@ -186,6 +204,8 @@ export default function ClientDiagnosis() {
                   <>
                     <p><b>Assessment Summary:</b> {selected.assessment ?? '—'}</p>
                     <p><b>Status:</b> {selected.status}</p>
+                    <p><b>Doctor Name:</b> {selected.doctorName ?? '—'}</p>
+                    <p><b>Marketer Name:</b> {selected.marketerName ?? '—'}</p>
                   </>
                 )}
                 {selected.signature ? (
@@ -206,7 +226,7 @@ export default function ClientDiagnosis() {
                           value={assessment}
                           onChange={(e) => setAssessment(e.target.value)}
                           placeholder="Write your assessment..."
-                          className="min-h-28"
+                          className="min-h-20"
                         />
                       </div>
 
@@ -230,7 +250,7 @@ export default function ClientDiagnosis() {
                           <SignatureCanvas
                             ref={sigRef}
                             penColor="black"
-                            canvasProps={{ width: 500, height: 160, className: 'border w-full h-[160px]' }}
+                            canvasProps={{ width: 500, height: 160, className: 'border w-full h-[100px]' }}
                             backgroundColor="white"
                           />
                         </div>

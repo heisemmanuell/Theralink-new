@@ -125,9 +125,9 @@ const AdminHeader = () => {
                 Dashboard
               </Button>
             </Link>
-            <Link href="/admin/messages">
-              <Button className={`${isActivePath('messages')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
-                Messages
+            <Link href="/admin/appointments">
+              <Button className={`${isActivePath('appointments')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
+                Appointments
               </Button>
             </Link>
             <Link href="/admin/clients">

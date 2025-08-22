@@ -110,6 +110,12 @@ const AdminHeader = () => {
                     </div>
                   </div>
                   <DropdownMenuSeparator />
+                  <Link href="/admin/profile">                    
+                    <DropdownMenuItem className='cursor-pointer text-blue-600 focus:text-blue-600'>
+                      <UserCircle className="mr-2 h-4 w-4" />Profile
+                    </DropdownMenuItem>
+                  </Link>
+                  <DropdownMenuSeparator />        
                   <LogoutMenuItem />
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -133,6 +139,11 @@ const AdminHeader = () => {
             <Link href="/admin/clients">
               <Button className={`${isActivePath('clients')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
                 Clients
+              </Button>
+            </Link>
+            <Link href="/admin/register-a-doc">
+              <Button className={`${isActivePath('register-a-doc')} font-semibold rounded-sm text-[14px] h-7 w-22`} variant="pill" size="sm">
+                Register A Doctor
               </Button>
             </Link>
           </div>

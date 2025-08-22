@@ -14,7 +14,7 @@ export default function TodaysAppointments() {
   return (
     <Card className='col-span-2'>
       <CardHeader className='bg-slate-900 text-white py-3 mb-3 rounded-t-md'>
-        <CardTitle>Today&apos;s Conversations</CardTitle>
+        <CardTitle>Today&apos;s Appointement</CardTitle>
       </CardHeader>
       <CardContent>
         <ScrollArea className='h-[200px]'>
@@ -22,10 +22,9 @@ export default function TodaysAppointments() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Client</TableHead>
-                  <TableHead>Staff</TableHead>
-                  <TableHead>Appointment</TableHead>
-                  <TableHead>Appt Type</TableHead>
+                  <TableHead>Doctor</TableHead>
+                  <TableHead>Marketer</TableHead>
+                  <TableHead>Appointment Time</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -39,10 +38,7 @@ export default function TodaysAppointments() {
                     </TableCell>
                     <TableCell>
                       {['9:00AM', '11:30AM'][Math.floor(Math.random() * 2)]}
-                    </TableCell>
-                    <TableCell className='text-right'>
-                      {['Family', 'Personal'][Math.floor(Math.random() * 2)]}
-                    </TableCell>
+                    </TableCell>                    
                   </TableRow>
                 ))}
               </TableBody>

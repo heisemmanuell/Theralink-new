@@ -37,33 +37,6 @@ export default function AdminDashboard() {
 
           {/* Billing Information */}
           <BillingInformation />
-
-          {/* Clients by Status Table */}
-          {/* <ClientsByStatusTable /> */}
-
-          {/* Clients by Status */}
-          {/* <ClientsByStatus /> */}
-
-          {/* Trainings (in next 90 days) */}
-          {/* <Training /> */}
-
-          {/* Client Authorizations */}
-          {/* <ClientAuthorizations /> */}
-
-          {/* Clients by Payer */}
-          {/* <ClientsByPayer /> */}
-
-          {/* Clients by Site */}
-          {/* <ClientsBySite /> */}
-
-          {/* Upcoming Compliance */}
-          {/* <UpcomingComplience /> */}
-
-          {/* Staff Not Logged In */}
-          {/* <StaffNotLoggedIn /> */}
-
-          {/* Days Since Clients Last Seen */}
-          {/* <DaysSinceClientsLastSeen /> */}
         </div>
       </main>
     </div>

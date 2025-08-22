@@ -57,12 +57,7 @@ const AdminHeader = () => {
                 priority
               /> */}
             </div>
-            <div className="flex items-center gap-2">
-              <div className="relative mr-10 hidden md:block">
-                <Search className="h-4 w-4 absolute left-3 top-2.5 text-gray-500" />
-                <Input className='mt-0 pl-10' placeholder="Find Clients..." />
-              </div>
-
+            <div className="flex items-center gap-2">             
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button className='text-primary hover:text-primary' asChild variant="ghost" size="icon">
@@ -76,16 +71,7 @@ const AdminHeader = () => {
                     No new notifications
                   </DropdownMenuItem>
                 </DropdownMenuContent>
-              </DropdownMenu>
-              <Button className='text-primary hover:text-primary' asChild variant="ghost" size="icon">
-                <AlarmClock className="h-6 w-6 cursor-pointer" />
-              </Button>
-              <Button asChild variant="ghost" size="icon">
-                <PlusCircle fill='#021F55' color='white' className="h-6 w-6 cursor-pointer" />
-              </Button>
-              <Button asChild variant="ghost" size="icon">
-                <Mail className="h-6 w-6 cursor-pointer" />
-              </Button>
+              </DropdownMenu>              
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button asChild variant="ghost" size="icon">

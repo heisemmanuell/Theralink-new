@@ -42,7 +42,7 @@ export default function DoctorDashboard() {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg font-medium">
-              Marketer Information
+              Admin Information
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -115,7 +115,7 @@ export default function DoctorDashboard() {
 
             <div className="grid grid-cols-2 gap-6">
               <div className="space-y-4">
-                <p className="font-medium">Marketer Signature</p>
+                <p className="font-medium">Admin Signature</p>
                 <div className="flex items-center justify-center border rounded-lg p-4 h-24 bg-gray-50">
                   {clientSignature ? (
                     <Image src={clientSignature} alt="Client Signature" height={100} width={100} className="h-full w-auto" />

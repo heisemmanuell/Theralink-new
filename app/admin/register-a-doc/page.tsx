@@ -38,20 +38,21 @@ const registerFormSchema = z.object({
   middleName: z.string().optional(),
   dateOfBirth: z.string().min(1, "Date of birth is required"),
   phoneNumber: phoneSchema,
-  email: z.string().email("Invalid email address"),
-  address: z.string().min(1, "Address is required"),
-  streetAddress: z.string().min(1, "Street Address is required"),
-  streetAddressLine2: z.string().optional(),
-  city: z.string().min(1, "City is required"),
-  region: z.string().min(1, "Region is required"),
-  postalCode: z.string().min(1, "Postal/Zip code is required"),
-  country: z.string().min(1, "Country is required"),
+  email: z.string().email("Invalid email address"), 
   password: z.string().min(6, "Password must be at least 6 characters"),
   confirmPassword: z.string().min(6, "Please confirm your password"),
   certificate: z.any().optional(),
   driversLicense: z.any().optional(),
   ssn: z.any().optional(),
   resume: z.any().optional(),
+  address: z.object({
+    street: z.string().min(1, "Street is required"),
+    streetLine2: z.string().optional(),
+    city: z.string().min(1, "City is required"),
+    region: z.string().min(1, "Region is required"),
+    postalCode: z.string().min(1, "Postal code is required"),
+    country: z.string().min(1, "Country is required"),
+  }),
 })
 .refine((data) => data.password === data.confirmPassword, {
   path: ["confirmPassword"], // error will show under confirmPassword
@@ -61,18 +62,9 @@ const registerFormSchema = z.object({
 type FormValues = z.infer<typeof registerFormSchema>;
 
 export default function MarketerRegister() {
-  // const [activeTab, setActiveTab] = useState<'marketer' | 'doctor'>('marketer');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const router = useRouter();
-  // const pathname = usePathname();
-
-  // const activeTab =
-  //   pathname.includes("/doctor") ? "doctor" : "marketer";
-
-  // const handleTabClick = (tab: 'marketer' | 'doctor') => {
-  //   router.push(`/${tab}/register`);
-  // };
 
   const form = useForm<FormValues>({
     resolver: zodResolver(registerFormSchema),
@@ -83,14 +75,16 @@ export default function MarketerRegister() {
       dateOfBirth: "",
       phoneNumber: "",
       email: "",   
-      streetAddress: "",
-      streetAddressLine2: "",
-      city: "",
-      region: "",
-      postalCode: "",
-      country: "",
       password: "",
       confirmPassword: "",
+      address: {
+          street: "",
+          streetLine2: "",
+          city: "",
+          region: "",
+          postalCode: "",
+          country: "",
+      },
     },
   });
 
@@ -418,16 +412,13 @@ export default function MarketerRegister() {
                   {/* Address - Full Width */}
                   <FormField
                     control={form.control}
-                    name="streetAddress"
+                    name="address.street"
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-gray-700 font-medium">Street Address</FormLabel>
                         <FormControl>
                           <div className="relative">
-                            <Input 
-                              placeholder="Street Address" 
-                              {...field} 
-                            />
+                            <Input placeholder="Street Address" {...field} />
                           </div>
                         </FormControl>
                         <FormMessage />
@@ -437,15 +428,12 @@ export default function MarketerRegister() {
 
                   <FormField
                     control={form.control}
-                    name="streetAddressLine2"
+                    name="address.streetLine2"
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
                           <div className="relative">
-                            <Input 
-                              placeholder="Street Address Line 2" 
-                              {...field} 
-                            />
+                            <Input placeholder="Street Address Line 2" {...field} />
                           </div>
                         </FormControl>
                         <FormMessage />
@@ -453,46 +441,64 @@ export default function MarketerRegister() {
                     )}
                   />
 
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-6">                    
                     <FormField
                       control={form.control}
-                      name="city"
+                      name="address.city"
                       render={({ field }) => (
-                        <Input placeholder="City" {...field} />
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="City" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="address.region"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Region" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                       )}
                     />
 
                     <FormField
                       control={form.control}
-                      name="region"
+                      name="address.postalCode"
                       render={({ field }) => (
-                        <Input placeholder="Region" {...field} />
+                        <FormItem>
+                          <FormControl>
+                            <Input placeholder="Postal / Zip Code" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                       )}
                     />
 
                     <FormField
                       control={form.control}
-                      name="postalCode"
+                      name="address.country"
                       render={({ field }) => (
-                        <Input placeholder="Postal / Zip Code" {...field} />
-                      )}
-                    />
-
-                    <FormField
-                      control={form.control}
-                      name="country"
-                      render={({ field }) => (
-                        <select
-                          {...field}
-                          className="border border-gray-300 rounded-md p-2 w-full"
-                        >
-                          <option value="">Select Country</option>
-                          {countryOptions.map((country) => (
-                            <option key={country.value} value={country.value}>
-                              {country.label}
-                            </option>
-                          ))}
-                        </select>
+                        <FormItem className="w-full">
+                          <FormLabel>Country</FormLabel>
+                          <FormControl>
+                            <select {...field} className="w-full rounded-md border px-3 py-2">
+                              <option value="">Select Country</option>
+                              {countryOptions.map((c) => (
+                                <option key={c.value} value={c.value}>
+                                  {c.label}
+                                </option>
+                              ))}
+                            </select>
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
                       )}
                     />
                   </div>
